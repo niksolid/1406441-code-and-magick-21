@@ -10,10 +10,10 @@
   userDialog.classList.remove(`hidden`);
 
   const similarListElement = userDialog.querySelector(`.setup-similar-list`);
-  const similarWizardTemplate = document.querySelector(`#similar-wizard-template`).content.querySelector(`.setup-similar-item`);
+  const similarWizardTemplate = document.querySelector(`#similar-wizard-template`).content;
 
-  const getRandomProperty = (wizardParametr) => {
-    return wizardParametr[Math.floor(wizardParametr.length * Math.random())];
+  const getRandomProperty = (array) => {
+    return array[Math.floor(array.length * Math.random())];
   };
 
   const getWizard = () => {
