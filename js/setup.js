@@ -47,4 +47,52 @@
   similarListElement.appendChild(fragment);
 
   document.querySelector(`.setup-similar`).classList.remove(`hidden`);
+  document.addEventListener('keydown',  (evt) => {
+    console.log(evt.keyCode);
+  });
+
+  // const setup = document.querySelector(`.setup`);
+  // const setupOpen = document.querySelector(`.setup-open`);
+  // const setupClose = setup.querySelector(`.setup-close`);
+
+  // const onPopupEscPress = (evt) => {
+  //   if (evt.key === 'Escape') {
+  //     evt.preventDefault();
+  //     closePopup();
+  //   }
+  // };
+
+  // const openPopup = () => {
+  //   setup.classList.remove('hidden');
+
+  //   document.addEventListener('keydown', onPopupEscPress);
+  // };
+
+  // const closePopup = () => {
+  //   setup.classList.add('hidden');
+
+  //   document.removeEventListener('keydown', onPopupEscPress);
+  // };
+
+  // setupOpen.addEventListener('click', function () {
+  //   openPopup();
+  // });
+
+  // setupOpen.addEventListener('keydown', function (evt) {
+  //   console.log(evt.key);
+  //   if (evt.key === 'Enter') {
+  //     openPopup();
+  //   }
+  // });
+
+  // setupClose.addEventListener('click', function () {
+  //   closePopup();
+  // });
+
+  // setupClose.addEventListener('keydown', function (evt) {
+  //   if (evt.key === 'Enter') {
+  //     closePopup();
+  //   }
+  // });
+
 })();
