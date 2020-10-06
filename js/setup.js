@@ -52,7 +52,7 @@
   const setupClose = setup.querySelector(`.setup-close`);
 
   const onPopupEscPress = (evt) => {
-    if (evt.keyCode === 27) {
+    if (evt.keyCode === 27 && evt.target !== userNameInput) {
       evt.preventDefault();
       closePopup();
     }
@@ -67,20 +67,24 @@
   const closePopup = () => {
     setup.classList.add(`hidden`);
 
-    document.removeEventListener(`keydown`, onPopupEscPress);
+    document.removeEventListener(`keydown`, onPopupEscPress, true);
   };
 
-  setupOpen.addEventListener(`click`, () => {
+  setupOpen.addEventListener(`click`, (evt) => {
+    evt.preventDefault();
     openPopup();
   });
 
   setupOpen.addEventListener(`keydown`, (evt) => {
+    // console.log(evt.target);
+    // console.log(userNameInput);
     if (evt.keyCode === 13) {
       openPopup();
     }
   });
 
-  setupClose.addEventListener(`click`, () => {
+  setupClose.addEventListener(`click`, (evt) => {
+    evt.preventDefault();
     closePopup();
   });
 
