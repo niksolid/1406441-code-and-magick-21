@@ -76,8 +76,6 @@
   });
 
   setupOpen.addEventListener(`keydown`, (evt) => {
-    // console.log(evt.target);
-    // console.log(userNameInput);
     if (evt.keyCode === 13) {
       openPopup();
     }
