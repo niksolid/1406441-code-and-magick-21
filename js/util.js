@@ -8,6 +8,11 @@
     return array[Math.floor(array.length * Math.random())];
   };
 
+  const getUtilRandomNumber = (min, max) => {
+    const rand = min - 0.5 + Math.random() * (max - min + 1);
+    return Math.round(rand);
+  };
+
   const isUtilEscEvent = (evt, action) => {
     if (evt.keyCode === ESC_KEYCODE) {
       evt.preventDefault();
@@ -42,13 +47,14 @@
   };
 
   window.setup = document.querySelector(`.setup`);
-  window.WIZARD_NAMES = [`Иван`, `Хуан Себастьян`, `Мария`, `Кристоф`, `Виктор`, `Юлия`, `Люпита`, `Вашингтон`];
-  window.WIZARD_SURNAMES = [`да Марья`, `Верон`, `Мирабелла`, `Вальц`, `Онопко`, `Топольницкая`, `Нионго`, `Ирвинг`];
+  // window.WIZARD_NAMES = [`Иван`, `Хуан Себастьян`, `Мария`, `Кристоф`, `Виктор`, `Юлия`, `Люпита`, `Вашингтон`];
+  // window.WIZARD_SURNAMES = [`да Марья`, `Верон`, `Мирабелла`, `Вальц`, `Онопко`, `Топольницкая`, `Нионго`, `Ирвинг`];
   window.WIZARD_COLOR_COATS = [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 161)`, `rgb(56, 159, 117)`, `rgb(215, 210, 55)`, `rgb(0, 0, 0)`];
   window.WIZARD_COLOR_EYES = [`black`, `red`, `blue`, `yellow`, `green`];
   window.WIZARD_COLOR_FIERBALL = [`#ee4830`, `#30a8ee`, `#5ce6c0`, `e848d5`, `e6e848`];
   window.util = {
     getRandomProperty: getUtilRandomProperty,
+    getRandomNumber: getUtilRandomNumber,
     isEscEvent: isUtilEscEvent,
     isEnterEvent: isUtilEnterEvent,
     recordBeginningCoords: recordUtilCoords,
