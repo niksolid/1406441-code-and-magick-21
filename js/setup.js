@@ -1,57 +1,22 @@
 'use strict';
 
 (function () {
-  const similarListElement = window.setup.querySelector(`.setup-similar-list`);
-  const similarWizardTemplate = document.querySelector(`#similar-wizard-template`).content;
-
-  const getWizard = () => {
-    return {
-      name: `${window.util.getRandomProperty(window.WIZARD_NAMES)} ${window.util.getRandomProperty(window.WIZARD_SURNAMES)}`,
-      coatColor: window.util.getRandomProperty(window.WIZARD_COLOR_COATS),
-      eyesColor: window.util.getRandomProperty(window.WIZARD_COLOR_EYES)
-    };
-  };
-
-  const wizards = [];
-  while (wizards.length < 4) {
-    wizards.push(getWizard());
-  }
-
-  const renderWizard = (wizard) => {
-    const wizardElement = similarWizardTemplate.cloneNode(true);
-    wizardElement.querySelector(`.setup-similar-label`).textContent = wizard.name;
-    wizardElement.querySelector(`.wizard-coat`).style.fill = wizard.coatColor;
-    wizardElement.querySelector(`.wizard-eyes`).style.fill = wizard.eyesColor;
-
-    return wizardElement;
-  };
-
-  const fragment = document.createDocumentFragment();
-
-  for (let i = 0; i < wizards.length; i++) {
-    fragment.appendChild(renderWizard(wizards[i]));
-  }
-
-  similarListElement.appendChild(fragment);
-
-  document.querySelector(`.setup-similar`).classList.remove(`hidden`);
-
   const setupOpen = document.querySelector(`.setup-open`);
   const setupClose = window.setup.querySelector(`.setup-close`);
 
   const onPopupEscPress = (evt) => {
     if (evt.target !== userNameInput) {
-      window.util.isEscEvent(evt, closePopup);
+      window.util.isEscEvent(evt, window.closePopup);
     }
   };
 
-  const openPopup = () => {
+  window.openPopup = () => {
     window.setup.classList.remove(`hidden`);
     window.util.recordBeginningCoords();
     document.addEventListener(`keydown`, onPopupEscPress);
   };
 
-  const closePopup = () => {
+  window.closePopup = () => {
     window.util.returnBeginningCoords();
     window.setup.classList.add(`hidden`);
     document.removeEventListener(`keydown`, onPopupEscPress, true);
@@ -59,20 +24,20 @@
 
   setupOpen.addEventListener(`click`, (evt) => {
     evt.preventDefault();
-    openPopup();
+    window.openPopup();
   });
 
   setupOpen.addEventListener(`keydown`, (evt) => {
-    window.util.isEnterEvent(evt, openPopup);
+    window.util.isEnterEvent(evt, window.openPopup);
   });
 
   setupClose.addEventListener(`click`, (evt) => {
     evt.preventDefault();
-    closePopup();
+    window.closePopup();
   });
 
   setupClose.addEventListener(`keydown`, (evt) => {
-    window.util.isEnterEvent(evt, closePopup);
+    window.util.isEnterEvent(evt, window.closePopup);
   });
 
   const userNameInput = document.querySelector(`.setup-user-name`);
